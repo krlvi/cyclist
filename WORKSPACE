@@ -16,6 +16,7 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 maven_install(
     artifacts = [
         "org.benf:cfr:0.145",
+        "com.google.guava:guava:28.0-jre",
     ],
     fetch_sources = True,
     repositories = [

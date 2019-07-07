@@ -1,9 +1,10 @@
 package com.videlov.cyclist;
 
 import com.videlov.cyclist.decompiler.PackageAnalyzer;
+import com.videlov.cyclist.graph.DirectedGraph;
+import com.videlov.cyclist.graph.StronglyConnectedComponents;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String... args) {
@@ -13,8 +14,18 @@ public class Main {
         }
         String jarPath = args[0];
         PackageAnalyzer packageAnalyzer = new PackageAnalyzer();
-        Map<String, Set<String>> packages = packageAnalyzer.getPackages(jarPath);
 
-        System.out.println(packages.size());
+        DirectedGraph dg = DirectedGraph.from(packageAnalyzer.getPackages(jarPath));
+
+        printGroups(StronglyConnectedComponents.findGroups(dg));
+    }
+
+    private static void printGroups(Collection<Set<String>> groups) {
+        for (Set<String> group : groups) {
+            System.out.println("============================================");
+            for (String packageName : group) {
+                System.out.println(packageName);
+            }
+        }
     }
 }

@@ -5,5 +5,6 @@ java_binary(
     visibility = ["//visibility:public"],
     deps = [
         "//java/com/videlov/cyclist/decompiler",
+        "//java/com/videlov/cyclist/graph",
     ],
 )
