@@ -413,3 +413,4 @@ com.intellij.designer.propertyTable.renderers
 com.intellij.designer.designSurface.selection
 ============================================
 ```
+test
